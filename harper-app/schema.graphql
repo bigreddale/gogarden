@@ -1,0 +1,13 @@
+## Here we can define any tables in our database. This example shows how we define a type as a table using
+## the type name as the table name and specifying it is an "export" available in the REST and other external protocols.
+
+type GardenHistory @table @export {
+    id: ID @primaryKey # Here we define primary key (must be one)
+    plantType: String @indexed
+    seedingDateStamp: String @indexed
+    germinationRate: Int @indexed
+    plantingNumber: Int
+    plantingDateStamp: String @indexed
+    firstHarvestDateStamp: String
+    harvestVolume: Float
+}
