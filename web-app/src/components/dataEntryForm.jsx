@@ -144,7 +144,7 @@ const DataEntryForm = ({ recordValues, doClose, isActive }) => {
             </form.Field>
             <div className={"actions"}>
                 <CustomButton type="button" color={"secondary"} onClick={doClose}>Cancel</CustomButton>
-                <CustomButton type="submit" color={"primary"}>Submit</CustomButton>
+                <CustomButton type="button" color={"primary"}>Submit</CustomButton>
             </div>
 
         </RootElement>

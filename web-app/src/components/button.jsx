@@ -1,19 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const CustomButton = ({ children, color = 'primary', onClick = () => {}, type = "button" }) => {
 
-    const [isActive, setActive] = useState(true);
-    const [isLoading, setIsLoading] = useState(false);
 
-    if(!isLoading) {
         return <RootElement>
-            <button disabled={!isActive} onClick={onClick} type={type} className={color}>{children}</button>
+            <button  onClick={onClick} type={type} className={color}>{children}</button>
         </RootElement>
-    }
-    return <RootElement>
-        <button disabled={!isActive} className={color}>Loading...</button>
-    </RootElement>
+
 }
 
 const RootElement = styled.div`
