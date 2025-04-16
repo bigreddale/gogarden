@@ -8,7 +8,6 @@ export default function plantDataPost(data) {
     const completeRequestUrl = `http://localhost:9926/GardenHistory/`;
 
     return new Promise((resolve, reject) => {
-        console.log('Posting: ', completeRequestUrl, data);
         axios.post(completeRequestUrl, data, {headers: {'Content-Type': 'application/json'}})
             .then((res) => {
                 resolve(res.data);
