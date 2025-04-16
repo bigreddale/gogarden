@@ -18,7 +18,6 @@ const PlantingEntryForm = ({recordValues, doClose, isActive}) => {
             seedingDateStamp: '',
         },
         onSubmit: async ({value}) => {
-            console.log('Hi there')
             if (value.id) {
                 return dispatch(updatePlantData(value));
             } else {

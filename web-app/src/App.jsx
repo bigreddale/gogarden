@@ -12,11 +12,21 @@ function App() {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = React.useState(false);
 
-    const plantDataArray = useMemo(() => Object.keys(plantDataObj).map((key) => plantDataObj[key]), [plantDataObj]);
+    const sortByDateDesc = (a, b) => {
+        if (new Date(a.seedingDateStamp) < new Date(b.seedingDateStamp)) {
+            return 1;
+        }
+        if (new Date(a.seedingDateStamp) > new Date(b.seedingDateStamp)) {
+            return -1;
+        }
+        return 0;
+    }
 
-    useEffect(() => {
+    const plantDataArray = useMemo(() => plantDataObj ? Object.keys(plantDataObj).map((key) => plantDataObj[key]).sort(sortByDateDesc) : [], [plantDataObj]);
+
+    if (plantDataObj === null) {
         dispatch(fetchPlantData());
-    }, []);
+    }
 
     const addEntry = () => {
         setShowModal(true);
@@ -42,7 +52,7 @@ function App() {
 
 const RootElement = styled.div`
 
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     padding: 0 1em;
     max-width: 1200px;

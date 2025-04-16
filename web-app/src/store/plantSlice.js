@@ -30,7 +30,7 @@ export const plantSlice = createSlice(
     {
         name: 'plantData',
         initialState: {
-            records: [],
+            records: null,
             fetching: false,
             updating: false,
             hasError: false,

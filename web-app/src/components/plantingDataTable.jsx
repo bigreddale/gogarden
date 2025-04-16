@@ -65,7 +65,7 @@ const PlantingDataTable = ({data}) => {
 
     return (
         <RootElement>
-            <PlantingEntryForm isActive={recordValues !== null} doClose={finishEditing} recordValues={recordValues}/>
+            {recordValues !== null && <PlantingEntryForm isActive doClose={finishEditing} recordValues={recordValues}/>}
             <div>
                 <table>
                     <thead>
