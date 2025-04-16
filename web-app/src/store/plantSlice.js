@@ -1,9 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { produce } from 'immer';
-import getPlantData from './fetchPlantData';
-import putPlantData from './updatePlantData';
-import postPlantData from './writePlantData';
-import deletePlantData from './deletePlantData.js'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {produce} from 'immer';
+import getPlantData from './apis/plantDataGet.js';
+import putPlantData from './apis/plantDataPut.js';
+import postPlantData from './apis/writePlantData.js';
+import deletePlantData from './apis/plantDataDelete.js'
 
 export const fetchPlantData = createAsyncThunk(
     'fetchPlantData',
@@ -57,6 +57,7 @@ export const plantSlice = createSlice(
                 hasError: false,
             }));
             builder.addCase(updatePlantData.fulfilled, (state, action) => produce(state, (draftState) => {
+                // API Call was successful, update the related record with data passed to the API
                 draftState.records[action.meta.arg.id] = action.meta.arg;
                 draftState.updating = false;
             }));
@@ -72,6 +73,7 @@ export const plantSlice = createSlice(
                 hasError: false,
             }));
             builder.addCase(writePlantData.fulfilled, (state, action) => produce(state, (draftState) => {
+                //API Call was successful, write API returns the ID assigned by the DB as it is not part of the form data.
                 draftState.records[action.payload] = {id: action.payload, ...action.meta.arg};
                 draftState.writing = false;
             }));
@@ -87,6 +89,7 @@ export const plantSlice = createSlice(
                 hasError: false,
             }));
             builder.addCase(removePlantData.fulfilled, (state, action) => produce(state, (draftState) => {
+                // API Call was successful, delete the record with the id passed to the API
                 delete draftState.records[action.meta.arg.id];
                 draftState.removing = false;
             }));
@@ -101,6 +104,5 @@ export const plantSlice = createSlice(
 );
 
 export const getAllRecords = (state) => state.plantData.records;
-export const isFetchingTodos = (state) => state.plantData.fetching;
 
 export default plantSlice.reducer;

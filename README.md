@@ -29,3 +29,12 @@ cd web-app
 npm install
 npm run dev
 ```
+
+# Assumptions
+
+- There is only one user connected to the DB at a time. This application does not validate changes to data in the DB
+  after the initial fetch. Upon successful post/put/delete the values are updated in application state rather than
+  refetching.
+- This is a happy-path POC. There is need for error handling and messaging and the hooks are there in the Redux store
+  but no user notification or interaction is coded.
+- Everything needs testing. Vitest has been configured and sample tests exist for the custom button component only.

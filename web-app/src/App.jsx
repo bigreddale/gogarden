@@ -1,9 +1,10 @@
 import React, {useEffect, useMemo} from 'react'
-import PlantingTable from './components/plantDataTable.jsx';
+import PlantingDataTable from './components/plantingDataTable.jsx';
 import {fetchPlantData, getAllRecords} from "./store/plantSlice.js";
 import {useDispatch, useSelector} from "react-redux";
 import CustomButton from "./components/button.jsx";
-import DataEntryForm from "./components/dataEntryForm.jsx";
+import PlantingEntryForm from "./components/plantingEntryForm.jsx";
+import styled from "styled-components";
 
 
 function App() {
@@ -25,16 +26,37 @@ function App() {
         setShowModal(false);
     }
 
-  return (
-    <>
-        <h1>Planting Table</h1>
-        <CustomButton onClick={addEntry}>Add New Entry</CustomButton>
-        <PlantingTable data={plantDataArray} />
-        <DataEntryForm isActive={showModal} doClose={finishEntry} />
+    return (
+        <RootElement>
+            <div className="header">
+                <h1>Planting Table</h1>
+                <CustomButton onClick={addEntry}>Add New Entry</CustomButton>
+            </div>
+            <PlantingDataTable data={plantDataArray}/>
+            <PlantingEntryForm isActive={showModal} doClose={finishEntry}/>
 
 
-    </>
-  )
+        </RootElement>
+    )
 }
 
+const RootElement = styled.div`
+
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    padding: 0 1em;
+
+    .header {
+        display: flex;
+
+        > h1 {
+            flex: 1;
+        }
+
+        > div {
+            margin: auto;
+        }
+    }
+
+`
 export default App

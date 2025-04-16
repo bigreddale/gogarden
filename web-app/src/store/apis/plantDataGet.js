@@ -1,9 +1,9 @@
 import axios from 'axios';
 import axiosRetry from 'axios-retry';
 
-axiosRetry(axios, { retries: 3 });
+axiosRetry(axios, {retries: 3});
 
-export default function fetchPlantData() {
+export default function plantDataGet() {
 
 
     const completeRequestUrl = `http://localhost:9926/GardenHistory/`;
