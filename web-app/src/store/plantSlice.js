@@ -2,7 +2,7 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {produce} from 'immer';
 import getPlantData from './apis/plantDataGet.js';
 import putPlantData from './apis/plantDataPut.js';
-import postPlantData from './apis/writePlantData.js';
+import postPlantData from './apis/./plantDataPost.js';
 import deletePlantData from './apis/plantDataDelete.js'
 
 export const fetchPlantData = createAsyncThunk(

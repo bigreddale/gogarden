@@ -6,7 +6,7 @@ axiosRetry(axios, {retries: 3});
 export default function plantDataGet() {
 
 
-    const completeRequestUrl = `http://localhost:9926/GardenHistory/`;
+    const completeRequestUrl = `http://localhost:9926/GardenHistory/?sort(-seedingDateStamp)`;
 
     return new Promise((resolve, reject) => {
         axios.get(completeRequestUrl)

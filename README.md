@@ -30,6 +30,15 @@ npm install
 npm run dev
 ```
 
+To preload mock data ensure the Harper application is running and you have run `npm install` in the web-app folder then
+use
+
+```
+npm run loadMocks
+```
+
+This will load 20 records into the Harper DB.
+
 # Assumptions
 
 - There is only one user connected to the DB at a time. This application does not validate changes to data in the DB

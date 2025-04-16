@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "loadMocks": "node ./scripts/initMockData.js"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
