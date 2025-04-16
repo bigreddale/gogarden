@@ -10,11 +10,12 @@ export default function plantDataPut(data) {
 
     return new Promise((resolve, reject) => {
         axios.put(completeRequestUrl, data, {headers: {'Content-Type': 'application/json'}})
+            .then(() => {
+                resolve('success');
+            })
             .catch((err) => {
                 reject(err);
             })
-            .then((res) => {
-                resolve('success');
-            });
+        ;
     });
 }

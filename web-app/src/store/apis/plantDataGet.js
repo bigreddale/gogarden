@@ -10,15 +10,16 @@ export default function plantDataGet() {
 
     return new Promise((resolve, reject) => {
         axios.get(completeRequestUrl)
-            .catch((err) => {
-                reject(err);
-            })
             .then((res) => {
                 const plantDataObj = {};
                 res.data.forEach((record) => {
                     plantDataObj[record.id] = record;
                 })
                 resolve(plantDataObj);
-            });
+            })
+            .catch((err) => {
+                reject(err);
+            })
+        ;
     });
 }

@@ -7,22 +7,22 @@ import deletePlantData from './apis/plantDataDelete.js'
 
 export const fetchPlantData = createAsyncThunk(
     'fetchPlantData',
-    () => getPlantData(),
+    async () => getPlantData(),
 );
 
 export const updatePlantData = createAsyncThunk(
     'updatePlantData',
-    (data) => putPlantData(data),
+    async (data) => putPlantData(data),
 )
 
 export const writePlantData = createAsyncThunk(
     'writePlantData',
-    (data) => postPlantData(data),
+    async (data) => postPlantData(data),
 )
 
 export const removePlantData = createAsyncThunk(
     'removePlantData',
-    (data) => deletePlantData(data),
+    async (data) => deletePlantData(data),
 )
 
 

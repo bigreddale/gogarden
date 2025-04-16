@@ -18,22 +18,11 @@ const PlantingEntryForm = ({recordValues, doClose, isActive}) => {
             seedingDateStamp: '',
         },
         onSubmit: async ({value}) => {
+            console.log('Hi there')
             if (value.id) {
-                dispatch(updatePlantData(value))
-                    .then(() => {
-                        doClose();
-                    })
-                    .catch((e) => {
-                        console.error(e)
-                    });
+                return dispatch(updatePlantData(value));
             } else {
-                dispatch(writePlantData(value))
-                    .then(() => {
-                        doClose();
-                    })
-                    .catch((e) => {
-                        console.error(e)
-                    });
+                return dispatch(writePlantData(value));
             }
         },
     });
@@ -55,6 +44,9 @@ const PlantingEntryForm = ({recordValues, doClose, isActive}) => {
                     (e) => {
                         e.preventDefault()
                         form.handleSubmit()
+                            .then(() => {
+                                doClose();
+                            });
                     }
                 }>
                 <form.Field name="plantType">
@@ -158,7 +150,7 @@ const PlantingEntryForm = ({recordValues, doClose, isActive}) => {
                 </form.Field>
                 <div className={"actions"}>
                     <CustomButton type="button" color={"secondary"} onClick={doClose}>Cancel</CustomButton>
-                    <CustomButton type="button" color={"primary"}>Submit</CustomButton>
+                    <CustomButton type="submit" color={"primary"}>Submit</CustomButton>
                 </div>
 
             </RootElement>

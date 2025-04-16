@@ -33,7 +33,7 @@ function App() {
                 <CustomButton onClick={addEntry}>Add New Entry</CustomButton>
             </div>
             <PlantingDataTable data={plantDataArray}/>
-            <PlantingEntryForm isActive={showModal} doClose={finishEntry}/>
+            {showModal && <PlantingEntryForm isActive doClose={finishEntry}/>}
 
 
         </RootElement>
@@ -45,6 +45,7 @@ const RootElement = styled.div`
     font-family: Avenir, Helvetica, Arial, sans-serif;
     font-size: 14px;
     padding: 0 1em;
+    max-width: 1200px;
 
     .header {
         display: flex;

@@ -66,36 +66,34 @@ const PlantingDataTable = ({data}) => {
     return (
         <RootElement>
             <PlantingEntryForm isActive={recordValues !== null} doClose={finishEditing} recordValues={recordValues}/>
-            <div style={{overflowX: 'auto'}}>
-                <table style={{width: '100%', borderCollapse: 'collapse'}}>
+            <div>
+                <table>
                     <thead>
                     {table.getHeaderGroups().map(headerGroup => (
                         <tr key={headerGroup.id}>
                             {headerGroup.headers.map(header => (
-                                <th
-                                    key={header.id}
-                                    style={{borderBottom: '1px solid #ccc', padding: '8px', textAlign: 'left'}}
-                                >
-                                    {header.isPlaceholder
-                                        ? null
-                                        : flexRender(header.column.columnDef.header, header.getContext())}
+                                <th key={header.id}>
+                                    {flexRender(header.column.columnDef.header, header.getContext())}
                                 </th>
                             ))}
-                            <th style={{borderBottom: '1px solid #ccc', padding: '8px', textAlign: 'left'}}>Actions</th>
+                            <th>Actions</th>
                         </tr>
                     ))}
                     </thead>
                     <tbody>
                     {table.getRowModel().rows.map(row => (
-                        <tr key={row.id} style={{borderBottom: '1px solid #eee'}}>
+                        <tr key={row.id}>
                             {row.getVisibleCells().map(cell => (
-                                <td key={cell.id} style={{padding: '8px'}}>
+                                <td key={cell.id}>
                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                 </td>
                             ))}
-                            <td class={"actions"}><CustomButton onClick={() => editEntry(row.original)}
-                                                                color={"tertiary"}>Edit</CustomButton><CustomButton
-                                onClick={() => deleteEntry(row.original)} color={"tertiary"}>Delete</CustomButton></td>
+                            <td className={"actions"}>
+                                <CustomButton onClick={() => editEntry(row.original)}
+                                              color={"tertiary"}>Edit</CustomButton>
+                                <CustomButton onClick={() => deleteEntry(row.original)}
+                                              color={"tertiary"}>Delete</CustomButton>
+                            </td>
                         </tr>
                     ))}
                     </tbody>
@@ -106,8 +104,26 @@ const PlantingDataTable = ({data}) => {
 };
 
 const RootElement = styled.div`
-    max-width: 1200px;
     min-width: 600px;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th {
+            border-bottom: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        tr {
+            border-bottom: 1px solid #eee;
+        }
+
+        td {
+            padding: 8px;
+        }
+    }
 
     .actions {
         display: flex;
