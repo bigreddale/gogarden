@@ -26,7 +26,7 @@ const RootElement = styled.div`
             color: white;
             background-color: #090;
             border: 2px solid #090;
-            box-shadow: inset 0 0 0 2px white;
+            box-shadow: inset 0 0 0 1px white;
 
             &:hover {
                 background-color: #0A0;
@@ -38,7 +38,7 @@ const RootElement = styled.div`
             color: #333;
             background-color: #ccc;
             border: 2px solid #ccc;
-            box-shadow: inset 0 0 0 2px #999;
+            box-shadow: inset 0 0 0 1px #999;
 
             &:hover {
                 background-color: #ddd;

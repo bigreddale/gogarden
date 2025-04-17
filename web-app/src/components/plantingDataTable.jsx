@@ -73,7 +73,7 @@ const PlantingDataTable = ({data}) => {
                         <tr key={headerGroup.id}>
                             {headerGroup.headers.map(header => (
                                 <th key={header.id}>
-                                    {flexRender(header.column.columnDef.header, header.getContext())}
+                                    {header.column.columnDef.header}
                                 </th>
                             ))}
                             <th>Actions</th>
@@ -85,7 +85,7 @@ const PlantingDataTable = ({data}) => {
                         <tr key={row.id}>
                             {row.getVisibleCells().map(cell => (
                                 <td key={cell.id}>
-                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    {cell.getValue()}
                                 </td>
                             ))}
                             <td className={"actions"}>

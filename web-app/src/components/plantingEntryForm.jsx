@@ -13,10 +13,7 @@ const PlantingEntryForm = ({recordValues, doClose, isActive}) => {
     //TODO: Validate recordValues are in correct format
 
     const form = useForm({
-        defaultValues: recordValues || {
-            plantType: '',
-            seedingDateStamp: '',
-        },
+        defaultValues: recordValues || {},
         onSubmit: async ({value}) => {
             if (value.id) {
                 return dispatch(updatePlantData(value));
@@ -34,7 +31,7 @@ const PlantingEntryForm = ({recordValues, doClose, isActive}) => {
                             position: "fixed",
                             margin: "0px auto",
                             padding: "0",
-                            height: "350px",
+                            height: "365px",
                             overflow: "hidden",
                         }
                     }}>
@@ -51,7 +48,7 @@ const PlantingEntryForm = ({recordValues, doClose, isActive}) => {
                 <form.Field name="plantType">
                     {field => (
                         <div className={"formRow"}>
-                            <label>Plant Type</label>
+                            <label>Plant Type*</label>
                             <input
                                 value={field.state.value}
                                 onChange={e => field.handleChange(e.target.value)}
@@ -65,7 +62,7 @@ const PlantingEntryForm = ({recordValues, doClose, isActive}) => {
                 <form.Field name="seedingDateStamp">
                     {field => (
                         <div className={"formRow"}>
-                            <label>Seeding Date</label>
+                            <label>Seeding Date*</label>
                             <input
                                 value={field.state.value}
                                 onChange={e => field.handleChange(e.target.value)}
@@ -147,6 +144,7 @@ const PlantingEntryForm = ({recordValues, doClose, isActive}) => {
                         </div>
                     )}
                 </form.Field>
+                <sub>* required field</sub>
                 <div className={"actions"}>
                     <CustomButton type="button" color={"secondary"} onClick={doClose}>Cancel</CustomButton>
                     <CustomButton type="submit" color={"primary"}>Submit</CustomButton>
@@ -175,6 +173,10 @@ const RootElement = styled.form`
             box-sizing: border-box;
         }
 
+    }
+
+    sub {
+        padding: 0.5em;
     }
 
     .actions {
