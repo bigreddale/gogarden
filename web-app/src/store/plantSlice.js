@@ -42,7 +42,6 @@ export const plantSlice = createSlice(
                 hasError: false,
             }));
             builder.addCase(fetchPlantData.fulfilled, (state, action) => produce(state, (draftState) => {
-                console.log(typeof action.payload, action.payload);
                 draftState.fetching = false;
                 draftState.records = action.payload;
             }));
