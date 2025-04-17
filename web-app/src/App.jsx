@@ -1,10 +1,11 @@
-import React, {useEffect, useMemo} from 'react'
+import React, {useMemo} from 'react'
 import PlantingDataTable from './components/plantingDataTable.jsx';
 import {fetchPlantData, getAllRecords} from "./store/plantSlice.js";
 import {useDispatch, useSelector} from "react-redux";
 import CustomButton from "./components/button.jsx";
 import PlantingEntryForm from "./components/plantingEntryForm.jsx";
 import styled from "styled-components";
+import {sortByDateDesc} from "./common/utils.js";
 
 
 function App() {
@@ -12,15 +13,6 @@ function App() {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = React.useState(false);
 
-    const sortByDateDesc = (a, b) => {
-        if (new Date(a.seedingDateStamp) < new Date(b.seedingDateStamp)) {
-            return 1;
-        }
-        if (new Date(a.seedingDateStamp) > new Date(b.seedingDateStamp)) {
-            return -1;
-        }
-        return 0;
-    }
 
     const plantDataArray = useMemo(() => plantDataObj ? Object.keys(plantDataObj).map((key) => plantDataObj[key]).sort(sortByDateDesc) : [], [plantDataObj]);
 
